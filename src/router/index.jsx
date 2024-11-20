@@ -1,15 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "../pages";
-import { Layout } from "antd";
+import { NotFound } from "../pages"
+import Layout from "../components/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    children: {
-      path: "home",
-      element: <Home />
-    },
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
   },
 ]);
 
