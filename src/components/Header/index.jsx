@@ -36,12 +36,17 @@ const Header = () => {
         >
           <span
             className={`block h-1 w-8 rounded bg-black transition-all duration-300 ${
-              isMenuOpen ? "rotate-45 translate-y-2" : "mb-1"
+              isMenuOpen ? "rotate-45" : "mb-1"
             }`}
           ></span>
           <span
             className={`block h-1 w-8 rounded bg-black transition-all duration-300 ${
-              isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+              isMenuOpen ? "hidden" : "mb-1"
+            }`}
+          ></span>
+          <span
+            className={`block h-1 w-8 rounded bg-black transition-all duration-300 ${
+              isMenuOpen ? "-rotate-45 absolute" : ""
             }`}
           ></span>
         </button>
