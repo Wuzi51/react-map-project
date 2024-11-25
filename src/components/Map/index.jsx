@@ -15,7 +15,7 @@ const center = {
 const Map = () => {
   return (
     <div className='m-3 rounded-sm overflow-hidden'>
-      <LoadScript googleMapsApiKey="AIzaSyA321uIbldUOV2EndZY2UxNBPI22nSEHjE">
+      <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
       <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
         <Marker position={center} />
       </GoogleMap>
