@@ -9,7 +9,7 @@ const RestaurantInfo = ({ restaurant, onClose }) => {
       onOk={onClose}
       onCancel={onClose}
     >
-      <div className="border border-gray-950 p-4 rounded-lg shadow-lg">
+      <div className="border border-gray-950 p-4 rounded-lg">
         <h2 className="text-xl font-bold">{restaurant.name}</h2>
         <div className="mt-2 flex flex-col items-center">
           <img
