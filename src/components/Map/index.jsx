@@ -17,28 +17,28 @@ const restaurants = [
   {
     id: 1,
     name: "Restaurant A",
-    img: "https://via.placeholder.com/150",
+    img: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     comment: "good",
     position: { lat: 25.033964, lng: 121.564468 }, // 餐廳 A 的經緯度
   },
   {
     id: 2,
     name: "Restaurant B",
-    img: "https://via.placeholder.com/150",
+    img: "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     comment: "good",
     position: { lat: 25.047924, lng: 121.517081 }, // 餐廳 B 的經緯度
   },
   {
     id: 3,
     name: "Restaurant c",
-    img: "https://via.placeholder.com/150",
+    img: "https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     comment: "good",
     position: { lat: 25.032728, lng: 121.565137 }, // 餐廳 C 的經緯度
   },
 ];
 
 const Map = () => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [selectedRestaurant, setSelectedRestaurant] = useState();
 
   // 點擊標示事件處理
   const handleMarkerClick = (restaurant) => {
@@ -46,7 +46,7 @@ const Map = () => {
   };
 
   return (
-    
+
     <div className="m-3 rounded-sm overflow-hidden">
       <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={14}>
@@ -64,7 +64,7 @@ const Map = () => {
       {selectedRestaurant && (
         <RestaurantInfo
           restaurant={selectedRestaurant}
-          onClose={() => setSelectedRestaurant(null)} // 關閉 Modal
+          onClose={() => setSelectedRestaurant()} // 關閉 Modal
         />
       )}
     </div>
