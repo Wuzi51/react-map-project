@@ -19,4 +19,13 @@ export default defineConfig({
       }
     }
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://maps.googleapis.com/maps',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 })
