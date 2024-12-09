@@ -1,6 +1,7 @@
 import { Modal } from "antd";
 
-const RestaurantInfo = ({ restaurant, onClose }) => {
+
+const RestaurantInfo = ({ restaurant, onClose, onClick }) => {
   return (
     <Modal
       title="餐廳資訊"
@@ -14,7 +15,7 @@ const RestaurantInfo = ({ restaurant, onClose }) => {
         <div className="mt-2 flex flex-col items-center">
           <img
             className="w-full md:max-w-2xl max-h-[300px] rounded-md object-cover"
-            src={restaurant.img}
+            src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${restaurant.image}&key=${import.meta.env.GOOGLE_PLACE_API_KEY}`}
             alt={restaurant.name}
           />
         </div>
@@ -22,6 +23,7 @@ const RestaurantInfo = ({ restaurant, onClose }) => {
           <p>{restaurant.comment}</p>
         </div>
       </div>
+      <button onClick={onClick}>加入候選清單</button>
     </Modal>
   );
 };
