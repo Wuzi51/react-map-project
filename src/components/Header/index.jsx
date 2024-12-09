@@ -54,7 +54,7 @@ const Header = () => {
 
       {/* mobile */}
       {isMenuOpen && (
-        <nav className="absolute top-20 right-0 w-full h-full bg-white shadow-lg p-4 z-10 md:hidden">
+        <nav className="absolute top-20 right-0 w-8/12 h-full bg-white shadow-lg p-4 z-10 md:hidden">
           <ul className="text-xl">
             <li className="text-gray-700 mb-3 border-b border-solid  border-gray-700 p-2">登入</li>
             <li className="text-gray-700 mb-3 border-b border-solid  border-gray-700 p-2">候選清單</li>
