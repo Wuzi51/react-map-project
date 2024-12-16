@@ -1,9 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { Home, LoginPage, ShortList } from "../pages";
 import { NotFound } from "../pages"
 import Layout from "../components/Layout";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Layout />,
