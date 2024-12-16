@@ -7,13 +7,13 @@ const ShortList = () => {
   const { restaurantList, removeRestaurant, updateVotes } = useRestaurantStore();
   const [votedRestaurantId, setVotedRestaurantId] = useState(null); // 記錄已投票的餐廳
 
-  const handleVote = (id) => {
-    if (votedRestaurantId === id) {
+  const handleVote = (place_id) => {
+    if (votedRestaurantId === place_id) {
       message.warning("你已經對此餐廳投過票了！");
       return;
     }
-    updateVotes(id); // 更新票數
-    setVotedRestaurantId(id); // 記錄投票餐廳
+    updateVotes(place_id); // 更新票數
+    setVotedRestaurantId(place_id); // 記錄投票餐廳
   };
 
   return (
@@ -49,7 +49,7 @@ const ShortList = () => {
                 {/* 投票按鈕 */}
                 <button
                   className="w-full py-2 bg-gray-500 text-white rounded-md hover:bg-gray-400 mb-2"
-                  onClick={() => handleVote(restaurant.id)}
+                  onClick={() => handleVote(restaurant.place_id)}
                 >
                   投票 ({restaurant.votes || 0} 票)
                 </button>
