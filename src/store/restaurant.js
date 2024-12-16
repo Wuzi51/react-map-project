@@ -46,7 +46,7 @@ export const useRestaurantStore = create(
               ? { ...restaurant, votes: restaurant.votes + 1 } // 增加票數
               : restaurant
           ),
-        }));
+        })),
     }),
     {
       name: "restaurant",
