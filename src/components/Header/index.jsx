@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "@/store/user";
+import { message } from "antd";
 
 const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { username } = useUserStore();
+  const { token, setToken } = useUserStore(); 
 
   // 漢堡選單開關
   const toggleMenu = () => {
@@ -16,9 +20,15 @@ const Header = () => {
     setIsMenuOpen(false); // 點擊後關閉選單
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken")
+	  message.success('登出成功')
+    setToken('')
+  };
+
   return (
     <header className="flex items-center justify-between p-4 bg-gray-100 shadow-md">
-      
+    
       {/* logo */}
       <div className="flex justify-center" onClick={() => changePage("/")}>
         <img
@@ -56,17 +66,56 @@ const Header = () => {
       {isMenuOpen && (
         <nav className="absolute top-20 right-0 w-8/12 h-full bg-white shadow-lg p-4 z-10 md:hidden">
           <ul className="text-xl">
-            <li className="text-gray-700 mb-3 border-b border-solid  border-gray-700 p-2">登入</li>
-            <li className="text-gray-700 mb-3 border-b border-solid  border-gray-700 p-2">候選清單</li>
+            {/* 登入或登出按鈕 */}
+            <li className="text-gray-700 mb-3 border-b border-solid border-gray-700 p-2">
+              {token ? (
+                <p onClick={handleLogout}>登出</p>
+              ) : (
+                <p onClick={() => changePage('/login')}>登入</p>
+              )}
+            </li>
+            {token && (
+              <li
+                className="text-gray-700 mb-3 border-b border-solid border-gray-700 p-2"
+                onClick={() => changePage('/shortlist')}
+              >
+                候選清單
+              </li>
+            )}
           </ul>
         </nav>
       )}
 
+
       {/*desktop*/}
-      <nav className="hidden md:flex space-x-4">
-        <ul className="flex text-lg">
-          <li className="mx-5 text-gray-700 hover:cursor-pointer hover:text-neutral-500">候選清單</li>
-          <li className="mx-2 text-gray-700 hover:cursor-pointer hover:text-neutral-500">登入</li>
+      <nav className="hidden md:flex">
+        <ul className="flex text-lg items-center">
+          {token ? (
+            <>
+              <li>
+                <p className="text-xl">hi, {username}</p>
+              </li>
+              <li
+                className="mx-5 text-gray-700 hover:cursor-pointer hover:text-neutral-500"
+                onClick={() => changePage('/shortlist')}
+              >
+                <p>候選清單</p>
+              </li>
+              <li
+                className="mx-2 text-gray-700 hover:cursor-pointer hover:text-neutral-500"
+                onClick={handleLogout}
+              >
+                <p>登出</p>
+              </li>
+            </>
+        ) : (
+              <li
+                className="mx-2 text-gray-700 hover:cursor-pointer hover:text-neutral-500"
+                onClick={() => changePage('/login')}
+              >
+                <p>登入</p>
+              </li>
+          )}
         </ul>
       </nav>
     </header>
