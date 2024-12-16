@@ -56,7 +56,7 @@ const ShortList = () => {
                 {/* 刪除按鈕 */}
                 <button
                   className="w-full py-2 bg-rose-500 text-white rounded-md hover:bg-rose-400"
-                  onClick={() => removeRestaurant(restaurant.id)}
+                  onClick={() => removeRestaurant(restaurant.place_id)}
                 >
                   刪除
                 </button>

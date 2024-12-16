@@ -14,9 +14,10 @@ export const useRestaurantStore = create(
       addRestaurant: (restaurant) =>
         set((state) => {
           // 檢查餐廳是否已經存在於清單中
-          const isExisting = state.restaurantList.some((item) => item.id === restaurant.id);
+          const isExisting = state.restaurantList.some((item) => item.place_id === restaurant.place_id);
           if (isExisting) {
             message.warning("此餐廳已經存在候選清單中");
+            console.log(restaurant)
             return state; // 如果餐廳已經存在於清單中，則不進行任何變更
           }
           message.success("餐廳已成功加入候選清單");
@@ -26,15 +27,11 @@ export const useRestaurantStore = create(
         }),
 
       // 刪除指定餐廳
-      removeRestaurant: (id) =>
+      removeRestaurant: (place_id) =>
         set((state) => {
           const newRestaurantList = state.restaurantList.filter(
-            (restaurant) => restaurant.id !== id
+            (restaurant) => restaurant.place_id !== place_id
           );
-          if (newRestaurantList.length === state.restaurantList.length) {
-            message.warning("此餐廳不在候選清單中");
-            return state; // 如果餐廳不存在於清單中，則不做任何操作
-          }
           message.success("餐廳已成功從候選清單中刪除");
           return {
             restaurantList: newRestaurantList,
@@ -50,10 +47,6 @@ export const useRestaurantStore = create(
               : restaurant
           ),
         })),
-
-      // 清空餐廳列表
-      clearRestaurantList: () => set(() => ({ restaurantList: [] })),
-
     }),
     {
       name: "restaurant",
