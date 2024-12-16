@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home } from "../pages";
+import { Home, LoginPage, ShortList } from "../pages";
 import { NotFound } from "../pages"
 import Layout from "../components/Layout";
 
@@ -11,6 +11,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/shortlist",
+        element: <ShortList />,
       },
       {
         path: "*",
