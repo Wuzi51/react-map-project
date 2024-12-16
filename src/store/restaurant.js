@@ -39,14 +39,14 @@ export const useRestaurantStore = create(
         }),
 
       // 更新餐廳票數
-      updateVotes: (id) =>
+      updateVotes: (place_id) =>
         set((state) => ({
           restaurantList: state.restaurantList.map((restaurant) =>
-            restaurant.id === id
-              ? { ...restaurant, votes: (restaurant.votes || 0) + 1 }
+            restaurant.place_id === place_id
+              ? { ...restaurant, votes: restaurant.votes + 1 } // 增加票數
               : restaurant
           ),
-        })),
+        }));
     }),
     {
       name: "restaurant",
