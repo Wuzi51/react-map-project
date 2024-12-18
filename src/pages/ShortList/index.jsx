@@ -30,7 +30,7 @@ const ShortList = () => {
 
             return (
               <div
-                key={restaurant.id}
+                key={restaurant.place_id}
                 className="p-4 bg-white rounded-md shadow-md hover:shadow-lg transition relative"
               >
                 {/* 餐廳圖片 */}
