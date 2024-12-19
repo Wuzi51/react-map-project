@@ -8,10 +8,12 @@ const mapContainerStyle = {
   height: "700px",
 };
 
+const defaultLocation = { lat: 25.0330, lng: 121.5654 };
+
 const Map = () => {
   const [selectedRestaurant, setSelectedRestaurant] = useState();
   const [restaurants, setRestaurants] = useState([]);
-  const [userLocation, setUserLocation] = useState({});
+  const [userLocation, setUserLocation] = useState(defaultLocation);
 
     // 取得使用者位置
   const getUserLocation = () => {
@@ -24,21 +26,20 @@ const Map = () => {
               });
   };
 
-const getRestaurantData = async () => {
-    const radius = 5000; // 半徑，單位米
-    const url = `/api/place/nearbysearch/json?location=${userLocation.lat},${userLocation.lng}&radius=${radius}&type=restaurant&key=${import.meta.env.VITE_APP_GOOGLE_PLACE_API_KEY}`;
+  const getRestaurantData = async () => {
+    const radius = 5000;
     try {
-      const { data: { results } } = await axios.get(url);
-      if (results) {
-        setRestaurants(results)
-        return results; // 返回餐廳列表
-      } else {
-        console.log("未找到餐廳資訊");
-        return [];
-      }
+      const { data } = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/api/places`, {
+        params: {
+          lat: userLocation.lat,
+          lng: userLocation.lng,
+          radius,
+          type: "restaurant",
+        },
+      });
+      setRestaurants(data.results || []);
     } catch (error) {
-      console.error("API 請求錯誤:", error);
-      return [];
+      console.error("獲取餐廳資料失敗:", error.message);
     }
   };
 
@@ -48,15 +49,14 @@ const getRestaurantData = async () => {
   }
 
 
-  const init = async() => {
-      await getUserLocation()
-      getRestaurantData()
-  };
+  useEffect(() => {
+    getUserLocation(); // 獲取使用者位置
+  }, []);
 
   useEffect(() => {
-    if (!restaurants.length) {
-      init()
-    };
+    if (userLocation.lat && userLocation.lng) {
+      getRestaurantData(); // 使用者位置變化時下載餐廳數據
+    }
   }, [userLocation]);
 
   return (
