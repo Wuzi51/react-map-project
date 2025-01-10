@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8800/api',
+        target: process.env.VITE_APP_BACKEND_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
