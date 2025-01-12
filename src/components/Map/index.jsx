@@ -14,6 +14,7 @@ const Map = () => {
   const [selectedRestaurant, setSelectedRestaurant] = useState();
   const [restaurants, setRestaurants] = useState([]);
   const [userLocation, setUserLocation] = useState(defaultLocation);
+  const apiKey = import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY;
 
     // 取得使用者位置
   const getUserLocation = () => {
@@ -28,10 +29,9 @@ const Map = () => {
 
   const getRestaurantData = async () => {
     const radius = 5000;
-    const apiKey = import.meta.env.VITE_APP_GOOGLE_PLACE_API_KEY;
 
     try {
-      const { data } = await axios.get('/api/places', {
+    const { data } = await axios.get('/api/places', {
         params: {
           lat: userLocation.lat,
           lng: userLocation.lng,
@@ -41,7 +41,7 @@ const Map = () => {
       });
       setRestaurants(data.results || []);
     } catch (error) {
-      console.error("获取餐厅数据失败:", error.message);
+      console.error("獲取餐廳數據失敗:", error.message);
     }
   };
 
@@ -63,7 +63,7 @@ const Map = () => {
   return (
     <div className="m-3 rounded-sm overflow-hidden">
       {restaurants.length > 0 && (
-        <LoadScript googleMapsApiKey={import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY}>
+        <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap mapContainerStyle={mapContainerStyle} center={userLocation} zoom={14}>
           {restaurants.map((restaurant) => (
             <Marker

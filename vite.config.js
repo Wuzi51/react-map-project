@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => ({
     outDir: 'dist',
   },
   server: {
+    port: 3000,
     proxy: {
       '/api': {
         target: 'http://localhost:8800/api',
