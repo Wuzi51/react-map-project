@@ -1,10 +1,8 @@
 import { Modal, Rate } from "antd";
 import { useRestaurantStore } from "@/store/restaurant";
-import { useUserStore } from "@/store/user";
 
 const RestaurantInfo = ({ restaurant, onClose }) => {
   const { addRestaurant } = useRestaurantStore();
-  const { token } = useUserStore();
 
   const imageUrl = restaurant.image
     ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${restaurant.image}&key=${import.meta.env.VITE_APP_GOOGLE_PLACE_API_KEY}`
@@ -47,14 +45,12 @@ const RestaurantInfo = ({ restaurant, onClose }) => {
           )}
         </div>
         <div className="flex justify-center mt-6">
-          {token && 
           <button
             className="w-full py-2 bg-gray-500 text-lg text-white rounded-md hover:bg-gray-400"
             onClick={handleAddToShortlist}
           >
             加入候選清單
           </button>
-          }
         </div>
       </div>
     </Modal>
