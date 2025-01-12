@@ -14,20 +14,23 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-    css: {
-      postcss: {
-        plugins: [tailwindcss()]
-      }
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss()]
     }
   },
+  build: {
+    outDir: 'dist',
+  },
   server: {
-    port: 3000,
     proxy: {
       '/api': {
-        target: process.env.VITE_APP_BACKEND_URL,
+        target: 'http://localhost:8800/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
-  },
-}))
+  }
+}
+))

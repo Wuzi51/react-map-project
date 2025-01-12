@@ -7,7 +7,7 @@ const mapContainerStyle = {
   width: "100%",
   height: "700px",
 };
-
+// 預設位置 => 避免使用者不想給位置
 const defaultLocation = { lat: 25.0330, lng: 121.5654 };
 
 const Map = () => {
@@ -18,18 +18,20 @@ const Map = () => {
     // 取得使用者位置
   const getUserLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
-          const userPosition = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setUserLocation(userPosition);
-              });
+      const userPosition = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      setUserLocation(userPosition);
+    });
   };
 
   const getRestaurantData = async () => {
     const radius = 5000;
+    const apiKey = import.meta.env.VITE_APP_GOOGLE_PLACE_API_KEY;
+
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/api/places`, {
+      const { data } = await axios.get('/api/places', {
         params: {
           lat: userLocation.lat,
           lng: userLocation.lng,
@@ -39,15 +41,14 @@ const Map = () => {
       });
       setRestaurants(data.results || []);
     } catch (error) {
-      console.error("獲取餐廳資料失敗:", error.message);
+      console.error("获取餐厅数据失败:", error.message);
     }
   };
 
   // 點擊標示事件處理
   const handleMarkerClick = (restaurant) => {
-  setSelectedRestaurant({ ...restaurant, image: restaurant.photos[0].photo_reference });
+    setSelectedRestaurant({ ...restaurant, image: restaurant.photos[0].photo_reference });
   }
-
 
   useEffect(() => {
     getUserLocation(); // 獲取使用者位置
@@ -61,7 +62,7 @@ const Map = () => {
 
   return (
     <div className="m-3 rounded-sm overflow-hidden">
-      {restaurants.length && (
+      {restaurants.length > 0 && (
         <LoadScript googleMapsApiKey={import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY}>
         <GoogleMap mapContainerStyle={mapContainerStyle} center={userLocation} zoom={14}>
           {restaurants.map((restaurant) => (
