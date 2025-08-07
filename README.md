@@ -9,6 +9,7 @@
 **Google Map 餐廳地點票選網站** 是一個使用 React 開發web，結合 Google 地圖 API 提供餐廳選擇與票選功能，讓使用者能夠輕鬆瀏覽餐廳地點、投票選出心儀的餐廳。
 
 主要特色：
+
 - 使用 Google 地圖標註餐廳位置。
 - 支援新增與移除餐廳至候選清單。
 - 投票選出最喜愛的餐廳。
@@ -23,7 +24,6 @@
 
 2. 餐廳候選清單：
    - 使用者可以新增及刪除候選清單。
-   
 3. 投票功能：
    - 用戶可以投票選擇最喜愛的餐廳。
 
@@ -36,6 +36,7 @@
 ## 🛠 技術棧
 
 ### 前端
+
 - **框架**：React、React Router、Zustand
 - **第三方 API**：Google Maps API、Google Place API
 - **樣式管理/UI 框架**：Ant Design、Tailwind CSS
@@ -46,21 +47,26 @@
 ## 🔧 安裝與執行
 
 ### 1. 取得專案
+
 ```bash
 git clone https://github.com/Wuzi51/react-map-project
 cd react-map-project
 ```
 
 ### 2. 安裝套件
+
 ```bash
 npm install
 ```
 
 ### 3. 啟動專案
+
 ```bash
 npm run dev
 ```
+
 在瀏覽器輸入以下網址即可看到專案：
+
 - `http://localhost:3000`
 
 ---

@@ -16,8 +16,8 @@ export default async function handler(req, res) {
           location: `${lat},${lng}`,
           radius,
           type,
-          key: apiKey
-        }
+          key: apiKey,
+        },
       }
     );
     res.status(200).json(response.data);

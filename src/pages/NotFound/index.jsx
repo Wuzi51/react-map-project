@@ -3,7 +3,7 @@ const NotFound = () => {
     <>
       <main>Not Found</main>
     </>
-  )
+  );
 };
 
 export default NotFound;

@@ -1,16 +1,16 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export const useUserStore = create(
   persist(
     (set) => ({
-      token: "",
+      token: '',
       setToken: (token) => set({ token }),
-      username: "",
+      username: '',
       setUsername: (username) => set({ username }),
     }),
     {
-      name: "user",
+      name: 'user',
     }
   )
 );

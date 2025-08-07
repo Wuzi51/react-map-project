@@ -1,27 +1,27 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Home, LoginPage, ShortList } from "../pages";
-import { NotFound } from "../pages"
-import Layout from "../components/Layout";
+import { createBrowserRouter } from 'react-router-dom';
+import { Home, Favorite, Review } from '../pages';
+import { NotFound } from '../pages';
+import Layout from '../components/Layout';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/login",
-        element: <LoginPage />,
+        path: '/favorite',
+        element: <Favorite />,
       },
       {
-        path: "/shortlist",
-        element: <ShortList />,
+        path: '/review',
+        element: <Review />,
       },
       {
-        path: "*",
+        path: '*',
         element: <NotFound />,
       },
     ],

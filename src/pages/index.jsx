@@ -1,6 +1,6 @@
-import Home from "./Home";
-import NotFound from "./NotFound";
-import LoginPage from "./LoginPage";
-import ShortList from "./ShortList";
+import Home from './Home';
+import NotFound from './NotFound';
+import Favorite from './Favorite';
+import Review from './Review';
 
-export { Home, NotFound, LoginPage, ShortList };
+export { Home, NotFound, Favorite, Review };
