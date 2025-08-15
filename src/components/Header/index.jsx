@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -10,7 +10,6 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // 導航功能
   const changePage = (url) => {
     navigate(url);
     setIsMenuOpen(false); // 點擊後關閉選單
@@ -22,7 +21,7 @@ const Header = () => {
       <div className="flex justify-center" onClick={() => changePage('/')}>
         <div className="hover:cursor-pointer select-none">
           <h1 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-slate-700 to-slate-900 bg-clip-text text-transparent flex items-center gap-2">
-            <img src="/ramen-detailed.svg" alt="拉麵" className="w-8 h-8 md:w-10 md:h-10" />
+            <img src="/ramen.svg" alt="拉麵" className="w-8 h-8 md:w-10 md:h-10" />
             拉麵地圖
           </h1>
         </div>
@@ -50,13 +49,22 @@ const Header = () => {
       {isMenuOpen && (
         <nav className="absolute top-20 right-0 w-8/12 h-full bg-white shadow-lg p-4 z-10 md:hidden">
           <ul className="text-xl">
-            <li className="text-gray-700 mb-3 border-b border-solid border-gray-700 p-2" onClick={() => changePage('/')}>
+            <li
+              className="text-gray-700 mb-3 border-b border-solid border-gray-700 p-2"
+              onClick={() => changePage('/')}
+            >
               首頁
             </li>
-            <li className="text-gray-700 mb-3 border-b border-solid border-gray-700 p-2" onClick={() => changePage('/favorite')}>
+            <li
+              className="text-gray-700 mb-3 border-b border-solid border-gray-700 p-2"
+              onClick={() => changePage('/favorite')}
+            >
               我的收藏
             </li>
-            <li className="text-gray-700 mb-3 border-b border-solid border-gray-700 p-2" onClick={() => changePage('/review')}>
+            <li
+              className="text-gray-700 mb-3 border-b border-solid border-gray-700 p-2"
+              onClick={() => changePage('/review')}
+            >
               我的食記
             </li>
           </ul>
@@ -66,14 +74,26 @@ const Header = () => {
       {/*desktop*/}
       <nav className="hidden md:flex">
         <ul className="flex text-lg items-center">
-          <li className="mx-5 text-gray-700 hover:cursor-pointer hover:text-neutral-500" onClick={() => changePage('/')}>
-            首頁
+          <li className="mx-5">
+            <Link to="/" className="text-gray-700 hover:cursor-pointer hover:text-neutral-500">
+              首頁
+            </Link>
           </li>
-          <li className="mx-5 text-gray-700 hover:cursor-pointer hover:text-neutral-500" onClick={() => changePage('/favorite')}>
-            我的收藏
+          <li className="mx-5">
+            <Link
+              to="/favorite"
+              className="text-gray-700 hover:cursor-pointer hover:text-neutral-500"
+            >
+              我的收藏
+            </Link>
           </li>
-          <li className="mx-5 text-gray-700 hover:cursor-pointer hover:text-neutral-500" onClick={() => changePage('/review')}>
-            我的食記
+          <li className="mx-5">
+            <Link
+              to="/review"
+              className="text-gray-700 hover:cursor-pointer hover:text-neutral-500"
+            >
+              我的食記
+            </Link>
           </li>
         </ul>
       </nav>
