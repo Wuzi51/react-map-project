@@ -1,77 +1,89 @@
-# Google Map 餐廳地點票選網站
+# Ramen Map
 
-<img src="./src/images/Xnip2025-01-11_04-25-19.jpg" width="500">
-<img src="./src/images/Xnip2025-01-11_04-25-48.jpg" width="500">
-<img src="./src/images/Xnip2025-01-11_04-26-20.jpg" width="500">
+<img src="./src/images/home.jpg" width="500">
+<img src="./src/images/favorite.jpg" width="500">
+<img src="./src/images/review.jpg" width="500">
 
-## 🚀 專案簡介
+## 🚀 Project Overview
 
-**Google Map 餐廳地點票選網站** 是一個使用 React 開發web，結合 Google 地圖 API 提供餐廳選擇與票選功能，讓使用者能夠輕鬆瀏覽餐廳地點、投票選出心儀的餐廳。
+**Ramen Map** is a modern web application built with React that integrates Google Maps API to automatically mark ramen shops around your location. Users can quickly find ramen shops they want to try, add them to their personal favorites list, and write their own food reviews and ratings.
 
-主要特色：
-
-- 使用 Google 地圖標註餐廳位置。
-- 支援新增與移除餐廳至候選清單。
-- 投票選出最喜愛的餐廳。
-- 提供登入與登出功能。
+Key Features:
+- 🗺️ Mark nearby ramen shop locations using Google Maps
+- ⭐ Add and remove shops from personal favorites list with visit status tracking
+- 📝 Write food reviews and ratings
 
 ---
 
-## 🎯 專案功能
+## 🎯 Project Features
 
-1. 地圖標記與搜尋：
-   - 使用 `react-google-maps` 套件來顯示地圖並標註餐廳位置。
+### 🗺️ Map Functionality
+- Interactive map display using `@react-google-maps/api` package
+- Automatic user location detection
+- Mark nearby ramen shop locations with basic information
+- Click markers to view detailed restaurant information
 
-2. 餐廳候選清單：
-   - 使用者可以新增及刪除候選清單。
-3. 投票功能：
-   - 用戶可以投票選擇最喜愛的餐廳。
+### 🏪 Favorites Management
+- Browse detailed restaurant information (address, ratings, opening hours, etc.)
+- Add restaurants to personal favorites list
+- Remove restaurants from favorites list
+- Restaurant data integration with Google Places API
 
-4. 使用者登入與驗證：
-   - 使用 JWT (JSON Web Token) 實現 Token-based 登入驗證。
-   - 測試帳號：emilys，密碼：emilyspass。
-
----
-
-## 🛠 技術棧
-
-### 前端
-
-- **框架**：React、React Router、Zustand
-- **第三方 API**：Google Maps API、Google Place API
-- **樣式管理/UI 框架**：Ant Design、Tailwind CSS
-- **打包工具**：Vite
+### 📝 Review System
+- Write restaurant reviews and feedback
+- Five-star rating system
+- View Google Maps reviews and ratings
+- Personal review history management
 
 ---
 
-## 🔧 安裝與執行
+## 🛠 Tech Stack
 
-### 1. 取得專案
+### Frontend
+
+- **Framework**: React, React Router, Zustand
+- **Third-party APIs**: Google Maps API, Google Places API
+- **Styling/UI Framework**: Tailwind CSS
+- **Build Tool**: Vite
+
+---
+
+## 🔧 Installation & Setup
+
+### 1. Clone the Project
 
 ```bash
 git clone https://github.com/Wuzi51/react-map-project
 cd react-map-project
 ```
 
-### 2. 安裝套件
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. 啟動專案
+### 3. Environment Variables Setup
+
+This project requires a Google Maps API Key to function properly. Please obtain an API Key from Google Cloud Console and create a .env file in the project root:
+
+```bash
+VITE_GOOGLE_MAPS_API_KEY=YOUR_API_KEY
+```
+
+### 4. Start the Project
 
 ```bash
 npm run dev
 ```
 
-在瀏覽器輸入以下網址即可看到專案：
+Open your browser and navigate to:
 
 - `http://localhost:3000`
 
 ---
 
-## 📌 未來計劃
+## 📌 Future Plans
 
-- 增強餐廳搜尋與篩選功能。
-- 支援更多地圖交互功能，改善用戶體驗。
+- Enhance search and filtering functionality
+- Support more map interaction features to improve user experience
