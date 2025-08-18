@@ -68,7 +68,7 @@ npm install
 This project requires a Google Maps API Key to function properly. Please obtain an API Key from Google Cloud Console and create a .env file in the project root:
 
 ```bash
-VITE_GOOGLE_MAPS_API_KEY=YOUR_API_KEY
+VITE_APP_GOOGLE_MAPS_API_KEY=YOUR_API_KEY
 ```
 
 ### 4. Start the Project

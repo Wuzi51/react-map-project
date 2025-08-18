@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   const { lat, lng, radius, type } = req.query;
-  const apiKey = process.env.VITE_APP_GOOGLE_PLACE_API_KEY;
+  const apiKey = process.env.VITE_APP_GOOGLE_MAPS_API_KEY;
 
   try {
     const response = await axios.get(
